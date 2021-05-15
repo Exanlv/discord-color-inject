@@ -13,11 +13,11 @@ Optionally, create a custom color scheme with `node src/color.js "#FF0000" > src
 3. Make sure discord is running on debugging port 31337 (more details in # Debugging Port)
 4. When discord is finished loading, run `node src/index.js`
 
-# Debugging Port
+## Debugging Port
 
 For this to function, you need to launch Discord with a debugging port.
 
-## Linux
+#### Linux
 
 Locate the .desktop file for discord
 
@@ -32,10 +32,10 @@ Edit this file, add `--remote-debugging-port=31337` to the `Exec` line
 Exec=/usr/share/discord/Discord --remote-debugging-port=31337
 ```
 
-## Windows
+#### Windows
 Theres a screenshot in the article which might help, other than that -> ??
 
-## Mac OS
+#### Mac OS
 ??
 
 # Todo
