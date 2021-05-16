@@ -3,9 +3,9 @@ const WebSocket = require('ws');
 const fetch = require('node-fetch');
 
 (async() => {
-    const windowData = await (await fetch('http://localhost:31337/json/list')).json();
+    const webSocketDebuggerUrl = await getWebsocketUrl();
 
-    const ws = new WebSocket(windowData[0].webSocketDebuggerUrl, { perMessageDeflate: false });
+    const ws = new WebSocket(webSocketDebuggerUrl, { perMessageDeflate: false });
 
     await new Promise(resolve => ws.once('open', resolve));
 
@@ -35,3 +35,48 @@ const fetch = require('node-fetch');
         }
     }))
 })();
+
+function sleep(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, ms);
+    });
+}
+
+async function getWebsocketUrl() {
+    try {
+        const windowsData = await (await fetch('http://localhost:31337/json/list')).json();
+
+        const validStarts = ['https://discord.com/store', 'https://discord.com/library', 'https://discord.com/channels'];
+    
+        const windowData = windowsData.find((wd) => {
+            for (let i in validStarts)
+                if (wd.url.startsWith(validStarts[i]))
+                    return true;
+        });
+    
+        if (!windowData) {
+            exitIfNecessary();
+    
+            await sleep(3000);
+    
+            return getWebsocketUrl();
+        }
+    
+        return windowData.webSocketDebuggerUrl;
+    } catch (e) {
+        exitIfNecessary();
+
+        await sleep(3000);
+    
+        return getWebsocketUrl();
+    }
+}
+
+function exitIfNecessary() {
+    if (process.uptime > 60) {
+        console.log('Unable to find correct discord window, exiting...');
+        process.exit(1);
+    }
+}

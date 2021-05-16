@@ -84,4 +84,6 @@ for (let i in opacity) {
     console.log(`\t${i}: ${opacity[i]};`);
 }
 
+console.log('\t--font-display: Whitney,"Helvetica Neue",Helvetica,Arial,sans-serif;');
+
 console.log('}');

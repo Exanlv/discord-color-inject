@@ -3,23 +3,21 @@ Change the accent color of discord, without modifying the client
 
 Thanks to https://medium.com/@dany74q/injecting-js-into-electron-apps-and-adding-rtl-support-for-microsoft-teams-d315dfb212a6 for pointing me in the right direction
 
-# Installing
+## TOS warning
+Discord TOS states you cannot modify the client, as this does not modify any of the discord client files but rather injects code after launch, it should(?) be compliant (depending on how you interpret "modify"). Use at your own risk.
 
+
+### All systems
 1. Clone this repository
 2. `npm install`
 
-Optionally, create a custom color scheme with `node src/color.js "#FF0000" > src/inject/css.css` (replace FF0000 with your prefered color, leave the quotes)
 
-3. Make sure discord is running on debugging port 31337 (more details in # Debugging Port)
-4. When discord is finished loading, run `node src/index.js`
+### Linux
+This'll show you how to modify your .desktop file for discord to make the inject launch alongside discord and open up the remote debugging port for chromium
 
-## Debugging Port
+Note: If your desktop environment does not make use of .desktop files, the install process will be different
 
-For this to function, you need to launch Discord with a debugging port.
-
-#### Linux
-
-Locate the .desktop file for discord
+1. Locate the .desktop file for discord
 
 ex: 
 ```
@@ -27,18 +25,36 @@ $ locate *.desktop | grep discord
 > /usr/share/applications/discord.desktop
 ```
 
-Edit this file, add `--remote-debugging-port=31337` to the `Exec` line
+Copy the `Exec` value, in my case `/usr/share/discord/Discord`
+
+2. Create a new file (ex `/usr/bin/launch_discord`), use the path you found in step 1 in place of `/usr/share/discord/Discord`.
 ```
-Exec=/usr/share/discord/Discord --remote-debugging-port=31337
+#!/bin/bash
+
+nohup /usr/bin/node /home/exan/DiscordColor/src/index.js > /dev/null &
+/usr/share/discord/Discord --remote-debugging-port=31337
+```
+Note: your node path may be different than this, verify by running `which node`.
+
+3. Edit the .desktop file found in step 1, point `Exec` to the shell script you just created
+```
+Exec=/usr/bin/launch_discord
 ```
 
-#### Windows
-Theres a screenshot in the article which might help, other than that -> ??
+4. Close discord entirely and restart.
 
-#### Mac OS
-??
+### Windows
+Inc..
+
+### MacOS
+While I dont know how to install this in MacOS, it is still supported. If you are able to create install instructions for MacOS, a PR with these would be appreciated
+
+### Custom Color
+Optionally, create a custom color scheme with `node src/color.js "#FF0000" > src/inject/css.css` (replace FF0000 with your prefered color, leave the quotes)
+
+After generating the css, either restart the client or run `node src/index.js`
+
+If youre using a custom color, be careful with screenshots including these colors. Discord might ban you for it thinking its an alternative client. To quickly go back to vanilla styling, press `CTRL + R`. This will remove the custom CSS until restarted.
 
 # Todo
-- Make it so you dont have to run the script manually after each restart
-- Find out whether this is against TOS and add a warning if it is
 - Optimize color generation
