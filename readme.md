@@ -11,12 +11,20 @@ Discord TOS states you cannot modify the client, as this does not modify any of 
 ### Prerequisites
 - node
 - npm
-- python3 (windows only)
+- python3 (only needed when using windows)
 
 As long as youre using reasonably up to date versions of the above you should be fine
 
+Windows links
+- https://nodejs.org/en/ for node and npm, LTS is recommended
+- https://www.microsoft.com/en-us/p/python-39/9p7qfqmjrfp7?activetab=pivot:overviewtab for python
+
+Linux
+- Should all be in the repositories of the distro youre using
+
 ### All systems
-1. Clone this repository
+These instructions apply to all OSes. Complete these and then follow the OS-specific instructions
+1. Clone this repository (location does not matter)
 2. `npm install`
 
 Note: If you let discord startup with your system, you will need to "start" the apps manually after a boot for the inject to occur
