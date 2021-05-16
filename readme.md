@@ -6,6 +6,14 @@ Thanks to https://medium.com/@dany74q/injecting-js-into-electron-apps-and-adding
 ## TOS warning
 Discord TOS states you cannot modify the client, as this does not modify any of the discord client files but rather injects code after launch, it should(?) be compliant (depending on how you interpret "modify"). Use at your own risk.
 
+# Install
+
+### Prerequisites
+- node
+- npm
+- python3 (windows only)
+
+As long as youre using reasonably up to date versions of the above you should be fine
 
 ### All systems
 1. Clone this repository
@@ -44,7 +52,14 @@ Exec=/usr/bin/launch_discord
 4. Close discord entirely and restart.
 
 ### Windows
-Inc..
+1. Open the repository in your file manager
+2. Go to the src directory, create a shortcut for `windows.py` (file extension might be hidden)
+
+![Create shortcut](assets/create_shortcut.png)
+
+3. Move the shortcut to your desktop
+
+Note: the startup script can probably be remade in batch, I'm just not familair with batch so I used python instead
 
 ### MacOS
 While I dont know how to install this in MacOS, it is still supported. If you are able to create install instructions for MacOS, a PR with these would be appreciated
