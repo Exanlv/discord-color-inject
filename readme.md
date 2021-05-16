@@ -19,6 +19,7 @@ As long as youre using reasonably up to date versions of the above you should be
 1. Clone this repository
 2. `npm install`
 
+Note: If you let discord startup with your system, you will need to "start" the apps manually after a boot for the inject to occur
 
 ### Linux
 This'll show you how to modify your .desktop file for discord to make the inject launch alongside discord and open up the remote debugging port for chromium
@@ -58,6 +59,7 @@ Exec=/usr/bin/launch_discord
 ![Create shortcut](assets/create_shortcut.png)
 
 3. Move the shortcut to your desktop
+4. If desired, change the icon for the shortcut using a guide like this https://www.howtogeek.com/687014/how-to-change-the-icon-of-a-shortcut-on-windows-10/
 
 Note: the startup script can probably be remade in batch, I'm just not familair with batch so I used python instead
 
