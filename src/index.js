@@ -48,7 +48,7 @@ async function getWebsocketUrl() {
     try {
         const windowsData = await (await fetch('http://localhost:31337/json/list')).json();
 
-        const validStarts = ['https://discord.com/store', 'https://discord.com/library', 'https://discord.com/channels'];
+        const validStarts = ['https://discord.com/store', 'https://discord.com/library', 'https://discord.com/channels', 'https://ptb.discord.com/store', 'https://ptb.discord.com/library', 'https://ptb.discord.com/channels'];
     
         const windowData = windowsData.find((wd) => {
             for (let i in validStarts)
