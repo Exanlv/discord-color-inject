@@ -61,6 +61,7 @@ Exec=/usr/bin/launch_discord
 4. Close discord entirely and restart.
 
 ### Windows
+Optional: if you use Discord PTB, perform these actions with `windows_pbt.py`
 1. Open the repository in your file manager
 2. Go to the src directory, create a shortcut for `windows.py` (file extension might be hidden)
 
