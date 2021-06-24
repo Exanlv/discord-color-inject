@@ -1,4 +1,4 @@
-[data-popout-root].newBrand, html.newBrand {
+[data-popout-root], html, :root {
 	--brand-experiment-100: #FFFFFF;
 	--brand-experiment-160: #FFFFFF;
 	--brand-experiment-200: #FFFFFF;

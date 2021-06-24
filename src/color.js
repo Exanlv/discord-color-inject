@@ -70,7 +70,7 @@ for (let i in opacity) {
     opacity[i] = `rgba(${arr.join(', ')})`;
 }
 
-console.log('[data-popout-root].newBrand, html.newBrand {');
+console.log('[data-popout-root], html, :root {');
 
 for (let i in lighten) {
     console.log(`\t${i}: ${lighten[i]};`);
