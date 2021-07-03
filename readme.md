@@ -6,6 +6,8 @@ Thanks to https://medium.com/@dany74q/injecting-js-into-electron-apps-and-adding
 ## TOS warning
 Discord TOS states you cannot modify the client, as this does not modify any of the discord client files but rather injects code after launch, it should(?) be compliant (depending on how you interpret "modify"). Use at your own risk.
 
+Note that modify is used in the same sentence as download in the TOS. When launching the client you download the CSS stylesheet from discord.com, based on that you could make the assumption that injecting at launch every time does not count as modifying. I am not your lawyer.
+
 # Install
 
 ### Prerequisites
